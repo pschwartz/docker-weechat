@@ -1,0 +1,12 @@
+weechat:
+  image:      pschwartz/docker-weechat:latest
+  ports:
+     - "9022:22"
+     - "9001-9021:9001-9021"
+     - "60000-60050:60000-60050/udp"
+
+  env_file:
+    - ./keys.env
+
+  volumes:
+    - "./weechat:/home/docker/.weechat:rw"

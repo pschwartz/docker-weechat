@@ -17,11 +17,8 @@ EXPOSE 22
 # Mosh UDP ports
 EXPOSE 60000-60050/UDP
 
-# Weechat api relay port
-EXPOSE 9001
-
-# Weechat irc relay port
-EXPOSE 9002
+# Weechat relay ports
+EXPOSE 9001-9021
 
 ADD bashrc /home/docker/.bashrc
 ADD startup.sh /usr/bin/startup.sh
