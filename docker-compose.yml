@@ -68,7 +68,6 @@ services:
     environment:
       - VIRTUAL_HOST=znc.progmad.com
       - VIRTUAL_NETWORK=nginx-proxy
-      - VIRTUAL_PORT=6697
       - LETSENCRYPT_HOST=znc.progmad.com
       - LETSENCRYPT_EMAIL=philip@progmad.com
     volumes:
