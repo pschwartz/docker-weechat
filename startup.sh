@@ -17,5 +17,11 @@ echo $PUB_KEYS > /home/$USER/.ssh/authorized_keys
 chown $USER /home/$USER/.ssh/authorized_keys
 
 echo "SSH Keys activated... booting!"
+
+
+[[ -d /home/$USER/.weechat ]] || mkdir /home/$USER/.weechat
+
+chown -R $USER /home/$USER/.weechat
+
 export LC_ALL=en_US.UTF-8
 /usr/sbin/sshd -D
