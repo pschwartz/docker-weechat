@@ -42,22 +42,66 @@ services:
       - "9001-9021:9001-9021"
       - "60000-60050:60000-60050/udp"
     env_file:
-      - ./keys.env
+      - ./weechat.env
     environment:
-      - VIRTUAL_HOST=irc.progmad.com
+      - VIRTUAL_HOST=weechat.progmad.com
       - VIRTUAL_NETWORK=nginx-proxy
       - VIRTUAL_PORT=9001
-      - LETSENCRYPT_HOST=irc.progmad.com
+      - LETSENCRYPT_HOST=weecat.progmad.com
       - LETSENCRYPT_EMAIL=philip@progmad.com
     volumes:
       - weechat:/home/docker/.weechat:rw
     networks:
       - proxy-tier
 
+  znc-config:
+    image: stanback/alpine-znc
+    container_name: znc-config
+    command: --make-config
+    volumes:
+      - znc:/var/lib/znc:rw
+
+  znc:
+    image: stanback/alpine-znc
+    container_name: znc
+    ports:
+      - "6697:6697"
+
+    env_file:
+      - ./znc.env
+    environment:
+      - VIRTUAL_HOST=znc.progmad.com
+      - VIRTUAL_NETWORK=nginx-proxy
+      - VIRTUAL_PORT=6697
+      - LETSENCRYPT_HOST=znc.progmad.com
+      - LETSENCRYPT_EMAIL=philip@progmad.com
+    volumes:
+      - znc:/var/lib/znc:rw
+      - /etc/localtime:/etc/localtime:ro
+    networks:
+      - proxy-tier
+    depends_on:
+      - znc-config
+
+  bitlbee:
+    image: stanback/alpine-bitlbee
+    container_name: bitlbee
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - bitlbee:/var/lib/bitlbee:rw
+    networks:
+      - proxy-tier
+
+  
+
 volumes:
-  weechat:
+  bitlbee:
     driver: local
   certs:
+    driver: local
+  weechat:
+    driver: local
+  znc:
     driver: local
 
 networks:
