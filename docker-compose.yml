@@ -57,7 +57,7 @@ services:
   znc-config:
     image: stanback/alpine-znc
     container_name: znc-config
-    command: --make-config
+    command: --makeconf
     volumes:
       - znc:/var/lib/znc:rw
 
