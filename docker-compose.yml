@@ -52,7 +52,7 @@ services:
     volumes:
       - "./volumes/weechat:/home/docker/.weechat:rw"
     networks:
-      - proxy-teir
+      - proxy-tier
 
 networks:
   proxy-tier:
