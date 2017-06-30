@@ -9,6 +9,7 @@ then
 	(
 	    tmux has-session -t remote && tmux attach-session -t remote
 	) || (
+        [[ -d ~/.weechat ]] || mkdir ~/.weechat
 	    tmux new-session -s remote weechat-curses
 	)
     ) && exit 0
