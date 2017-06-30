@@ -50,12 +50,12 @@ services:
       - LETSENCRYPT_HOST=irc.progmad.com
       - LETSENCRYPT_EMAIL=philip@progmad.com
     volumes:
-      - "data:/home/docker/.weechat"
+      - "weechat:/home/docker/.weechat:rw"
     networks:
       - proxy-tier
 
 volumes:
-  data:
+  weechat:
   certs:
 
 networks:
