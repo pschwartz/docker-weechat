@@ -56,7 +56,7 @@ services:
     ports:
       - "6697:6697"
 
-    link:
+    links:
       - bitlbee:bitlbee
     env_file:
       - ./znc.env
