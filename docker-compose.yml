@@ -42,7 +42,7 @@ services:
       - VIRTUAL_HOST=weechat.progmad.com
       - VIRTUAL_NETWORK=nginx-proxy
       - VIRTUAL_PORT=9001
-      - LETSENCRYPT_HOST=weechat.progmad.com
+      - LETSENCRYPT_HOST=weechat.progmad.com,znc.progmad.com
       - LETSENCRYPT_EMAIL=philip@progmad.com
     volumes:
       - weechat:/home/docker/.weechat:rw
@@ -62,7 +62,7 @@ services:
     environment:
       - VIRTUAL_HOST=znc.progmad.com
       - VIRTUAL_NETWORK=nginx-proxy
-      - LETSENCRYPT_HOST=znc.progmad.com
+      - LETSENCRYPT_HOST=weechat.progmad.com,znc.progmad.com
       - LETSENCRYPT_EMAIL=philip@progmad.com
     volumes:
       - znc:/var/lib/znc:rw
