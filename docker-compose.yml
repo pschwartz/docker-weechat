@@ -45,6 +45,7 @@ services:
       - LETSENCRYPT_EMAIL=philip@progmad.com
     volumes:
       - weechat:/home/docker/.weechat:rw
+      - ./volumes/weechat/myweechat.md:/home/docker/myweechat.md:ro
     networks:
       - proxy-tier
 

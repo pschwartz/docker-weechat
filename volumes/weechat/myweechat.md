@@ -39,12 +39,6 @@ the last line request some IRCv3 capabilities. Capabilities supported by WeeChat
     /server add freenode ${sec.data.bncaddrport} -ssl -autoconnect
     /set irc.server.freenode.password phschwartz/freenode:${sec.data.bncpass}
 
-    /server add snoonet ${sec.data.bncaddrport} -ssl -autoconnect
-    /set irc.server.snoonet.password phschwartz/snoonet:${sec.data.bncpass}
-
-    /server add oftc ${sec.data.bncaddrport} -ssl -autoconnect
-    /set irc.server.oftc.password phschwartz/oftc:${sec.data.bncpass}
-
     /connect -all
 
 
