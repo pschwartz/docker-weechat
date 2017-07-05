@@ -2,3 +2,5 @@
 *#
 .#*
 keys.env
+weechat.env
+znc.env

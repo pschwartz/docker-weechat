@@ -4,8 +4,6 @@ services:
   nginx:
     image: jwilder/nginx-proxy
     container_name: nginx
-    labels:
-      com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy: "true"
     ports:
       - "80:80"
       - "443:443"
@@ -14,6 +12,7 @@ services:
       - /etc/nginx/conf.d
       - /etc/nginx/vhost.d
       - /usr/share/nginx/html
+      - ./volumes/proxy/proxy.conf:/etc/nginx/proxy.conf:ro
       - certs:/etc/nginx/certs:ro
     networks:
       - proxy-tier
@@ -54,7 +53,6 @@ services:
     container_name: znc
     ports:
       - "6697:6697"
-
     links:
       - bitlbee:bitlbee
     env_file:
@@ -62,6 +60,7 @@ services:
     environment:
       - VIRTUAL_HOST=znc.progmad.com
       - VIRTUAL_NETWORK=nginx-proxy
+      - VIRTUAL_PORT=6697
       - LETSENCRYPT_HOST=weechat.progmad.com,znc.progmad.com
       - LETSENCRYPT_EMAIL=philip@progmad.com
     volumes:
